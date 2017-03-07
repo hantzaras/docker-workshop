@@ -1,15 +1,26 @@
+# Specify the docker-compose syntax version
 version: '2'
+# Describe the services of this application
 services:
   myredis:
     image: redis:3.0
     command: redis-server --requirepass yourpassword
+  # service name
   app:
+    # build parameters. here we only provide the context.
     build: .
+    # The new image will be tagged according to this
     image: railsapp
+    # Command to run inside the container. This will override the Dockerfile
+    # command, if any.(same as the command you provide at 'docker run'
     command: rails s -p 3000 -b '0.0.0.0'
+    # Map host ports to container ports.
     ports:
       - "3000:3000"
+    # Wait for redis service to start and then start this service. Also links
+    # these containers
     depends_on:
       - myredis
+    # Environment variables to be passed to the container
     environment:
       - REDIS_URL=redis://:yourpassword@myredis:6379/0/cache
