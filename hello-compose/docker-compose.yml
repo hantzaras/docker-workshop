@@ -1,16 +1,15 @@
 version: '2'
 services:
-  redis:
-    image: redis
+  myredis:
+    image: redis:3.0
     command: redis-server --requirepass yourpassword
   app:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/myapp
+    image: railsapp
+    command: rails s -p 3000 -b '0.0.0.0'
     ports:
       - "3000:3000"
     depends_on:
-      - redis
+      - myredis
     environment:
-      - REDIS_URL=redis://:yourpassword@redis:6379/0/cache
+      - REDIS_URL=redis://:yourpassword@myredis:6379/0/cache

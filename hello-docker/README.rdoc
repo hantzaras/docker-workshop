@@ -5,7 +5,7 @@ You can run with:
 
 * Docker
 
- docker build -t docker-rails
+ docker build -t docker-rails .
  docker run -p 3000:3000 docker-rails
 
 or
