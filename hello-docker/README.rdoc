@@ -1,28 +1,16 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dockerized Rails Hello World.
 
-Things you may want to cover:
+You can run with:
 
-* Ruby version
+* Docker
 
-* System dependencies
+ docker build -t docker-rails
+ docker run -p 3000:3000 docker-rails
 
-* Configuration
+or
+* Docker Compose
 
-* Database creation
+ docker-compose up
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Go to `localhost:3000/hello/workable`.
