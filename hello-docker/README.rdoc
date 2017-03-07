@@ -13,4 +13,4 @@ or
 
  docker-compose up
 
-Go to `localhost:3000/hello/workable`.
+
